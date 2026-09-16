@@ -94,3 +94,49 @@ dataFaq.forEach((item, index) => {
   wrapper.append(tombol, jawaban);
   daftarFaq.append(wrapper);
 });
+const formKontak = document.querySelector('#form-kontak');
+const namaInput = document.querySelector('#nama');
+const emailInput = document.querySelector('#email');
+const pesanInput = document.querySelector('#pesan');
+const errorNama = document.querySelector('#error-nama');
+const errorEmail = document.querySelector('#error-email');
+const errorPesan = document.querySelector('#error-pesan');
+const statusKontak = document.querySelector('#status-kontak');
+
+function validasiEmail(nilai) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(nilai);
+}
+
+formKontak.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  const namaValid = namaInput.value.trim().length >= 3;
+  const emailValid = validasiEmail(emailInput.value.trim());
+  const pesanValid = pesanInput.value.trim().length >= 10;
+
+  namaInput.setAttribute('aria-invalid', String(!namaValid));
+  emailInput.setAttribute('aria-invalid', String(!emailValid));
+  pesanInput.setAttribute('aria-invalid', String(!pesanValid));
+
+  errorNama.textContent = namaValid ? '' : 'Nama minimal 3 karakter.';
+  errorEmail.textContent = emailValid ? '' : 'Format email tidak valid.';
+  errorPesan.textContent = pesanValid ? '' : 'Pesan minimal 10 karakter.';
+
+  if (!namaValid || !emailValid || !pesanValid) {
+    statusKontak.textContent = 'Periksa kembali data yang diisi.';
+    return;
+  }
+
+  statusKontak.textContent = `Terima kasih, ${namaInput.value.trim()}! Pesan Anda berhasil dikirim.`;
+  formKontak.reset();
+  [namaInput, emailInput, pesanInput].forEach((el) => el.removeAttribute('aria-invalid'));
+});
+const tombolAtas = document.querySelector('#tombol-atas');
+
+window.addEventListener('scroll', () => {
+  tombolAtas.hidden = window.scrollY < 300;
+});
+
+tombolAtas.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
