@@ -140,3 +140,7 @@ window.addEventListener('scroll', () => {
 tombolAtas.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
+const tombolTema = document.querySelector('#tombol-tema');
+tombolTema.addEventListener('click', () => {
+  document.body.classList.toggle('tema-gelap');
+});
