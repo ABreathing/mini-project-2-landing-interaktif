@@ -1,0 +1,123 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #1f2937;
+  background: #f8fafc;
+  transition: background 200ms, color 200ms;
+}
+.container {
+  width: min(90%, 1000px);
+  margin-inline: auto;
+  padding-block: 40px;
+}
+.site-header { background: white; border-bottom: 1px solid #e2e8f0; }
+.nav-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 16px;
+}
+.brand { font-weight: bold; font-size: 1.25rem; color: #1f2937; text-decoration: none; }
+.nav-toggle {
+  display: inline-block;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 6px;
+  background: #ea580c;
+  color: white;
+  cursor: pointer;
+}
+.nav-menu { display: none; flex-direction: column; width: 100%; gap: 8px; margin-top: 12px; }
+.nav-menu.terbuka { display: flex; }
+.nav-link { color: #1f2937; text-decoration: none; padding: 6px 0; }
+.nav-link:hover { color: #ea580c; }
+.nav-link:focus-visible, .nav-toggle:focus-visible, button:focus-visible {
+  outline: 3px solid #f59e0b;
+  outline-offset: 2px;
+}
+@media (min-width: 768px) {
+  .nav-toggle { display: none; }
+  .nav-menu { display: flex; flex-direction: row; width: auto; margin-top: 0; }
+}
+
+.hero { text-align: center; }
+.hero h1 { font-size: clamp(1.75rem, 5vw, 2.5rem); }
+
+.feature-list { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+.feature-card { padding: 16px; border: 1px solid #e2e8f0; border-radius: 12px; background: white; }
+@media (min-width: 768px) { .feature-list { flex-direction: row; flex-wrap: wrap; } .feature-card { flex: 1 1 240px; } }
+
+.faq-item { border-bottom: 1px solid #e2e8f0; }
+.faq-pertanyaan {
+  width: 100%;
+  text-align: left;
+  padding: 14px 0;
+  border: 0;
+  background: none;
+  font-weight: bold;
+  cursor: pointer;
+  color: #1f2937;
+}
+.faq-jawaban { padding-bottom: 14px; }
+.faq-jawaban[hidden] { display: none; }
+
+form { display: flex; flex-direction: column; gap: 4px; max-width: 480px; }
+input, textarea {
+  padding: 10px;
+  border: 1px solid #9ca3af;
+  border-radius: 8px;
+  font: inherit;
+}
+[aria-invalid="true"] { outline: 2px solid #b91c1c; }
+.error { color: #b91c1c; min-height: 18px; }
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #ea580c;
+  color: white;
+  border: 0;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  margin-top: 8px;
+}
+.button:hover { background: #c2410c; }
+
+.back-to-top, .theme-toggle {
+  position: fixed;
+  right: 16px;
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 8px;
+  background: #1f2937;
+  color: white;
+  cursor: pointer;
+}
+.back-to-top { bottom: 16px; }
+.theme-toggle { bottom: 64px; }
+
+body.tema-gelap { background: #111827; color: #f9fafb; }
+body.tema-gelap .site-header,
+body.tema-gelap .feature-card,
+body.tema-gelap form { background: #1f2937; }
+body.tema-gelap .brand,
+body.tema-gelap .nav-link,
+body.tema-gelap .faq-pertanyaan { color: #f9fafb; }
+.nav-toggle {
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 6px;
+  background: var(--color-primary);
+  color: white;
+  cursor: pointer;
+}
+.nav-menu { display: none; flex-direction: column; width: 100%; gap: 8px; margin-top: 12px; }
+.nav-menu.terbuka { display: flex; }
+.nav-toggle:focus-visible { outline: 3px solid #f4b000; outline-offset: 2px; }
+@media (min-width: 768px) {
+  .nav-toggle { display: none; }
+  .nav-menu { display: flex; flex-direction: row; width: auto; margin-top: 0; }
+}

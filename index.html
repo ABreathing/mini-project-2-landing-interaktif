@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lomba Basket D3-D4 Informatika</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-wrapper">
+    <a class="brand" href="#">Lomba Basket D3-D4</a>
+    <button id="tombol-nav" class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-utama">
+      Menu
+    </button>
+    <nav id="menu-utama" class="nav-menu" aria-label="Navigasi utama">
+      <a class="nav-link" href="#syarat">Syarat</a>
+      <a class="nav-link" href="#jadwal">Jadwal</a>
+      <a class="nav-link" href="#daftar">Daftar</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero container">
+    <h1>Bentuk Timmu, Rebut Gelar Juara Basket D3-D4 Informatika</h1>
+    <p>Daftar tim sekarang, cek syarat dan jadwal lengkap dalam satu halaman.</p>
+    <a href="#kontak" class="button">Daftar Tim Sekarang</a>
+  </section>
+
+  <section id="fitur" class="container">
+    <h2>Kenapa Ikut Lomba Ini</h2>
+    <label for="filter-kategori">Filter kategori</label>
+    <select id="filter-kategori">
+      <option value="semua">Semua</option>
+      <option value="kompetisi">Kompetisi</option>
+      <option value="komunitas">Komunitas</option>
+    </select>
+    <div id="daftar-fitur" class="feature-list"></div>
+  </section>
+
+  <section id="faq" class="container">
+    <h2>Pertanyaan Umum</h2>
+    <div id="daftar-faq"></div>
+  </section>
+
+  <section id="kontak" class="container">
+    <h2>Hubungi Panitia</h2>
+    <form id="form-kontak" novalidate>
+      <label for="nama">Nama</label>
+      <input id="nama" name="nama" type="text" required>
+      <small id="error-nama" class="error"></small>
+
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" required>
+      <small id="error-email" class="error"></small>
+
+      <label for="pesan">Pesan</label>
+      <textarea id="pesan" name="pesan" rows="4" required></textarea>
+      <small id="error-pesan" class="error"></small>
+
+      <button type="submit" class="button">Kirim Pesan</button>
+      <p id="status-kontak" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+</main>
+
+<footer class="site-footer container">
+  <p>&copy; 2026 Panitia Lomba Basket D3-D4 Teknik Informatika</p>
+</footer>
+
+<button id="tombol-atas" class="back-to-top" type="button" hidden>Kembali ke atas</button>
+<button id="tombol-tema" class="theme-toggle" type="button">Ganti tema</button>
+
+<script src="js/app.js" defer></script>
+</body>
+</html>
