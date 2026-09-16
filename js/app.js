@@ -55,3 +55,42 @@ filterKategori.addEventListener('change', () => {
   const hasil = nilai === 'semua' ? dataFitur : dataFitur.filter((item) => item.kategori === nilai);
   renderFitur(hasil);
 });
+const dataFaq = [
+  { pertanyaan: 'Siapa yang boleh mendaftar?', jawaban: 'Seluruh mahasiswa aktif D3-D4 Teknik Informatika.' },
+  { pertanyaan: 'Berapa biaya pendaftaran?', jawaban: 'Gratis, cukup isi formulir pendaftaran tim.' },
+  { pertanyaan: 'Berapa jumlah pemain per tim?', jawaban: 'Satu tim terdiri dari 8 hingga 12 pemain.' },
+];
+
+const daftarFaq = document.querySelector('#daftar-faq');
+
+dataFaq.forEach((item, index) => {
+  const wrapper = document.createElement('div');
+  const tombol = document.createElement('button');
+  const jawaban = document.createElement('div');
+
+  wrapper.classList.add('faq-item');
+  tombol.classList.add('faq-pertanyaan');
+  tombol.type = 'button';
+  tombol.textContent = item.pertanyaan;
+  tombol.setAttribute('aria-expanded', 'false');
+  tombol.id = `faq-tombol-${index}`;
+
+  jawaban.classList.add('faq-jawaban');
+  jawaban.textContent = item.jawaban;
+  jawaban.id = `faq-jawaban-${index}`;
+  jawaban.hidden = true;
+  tombol.setAttribute('aria-controls', jawaban.id);
+
+  tombol.addEventListener('click', () => {
+    const sedangTerbuka = tombol.getAttribute('aria-expanded') === 'true';
+    daftarFaq.querySelectorAll('.faq-pertanyaan').forEach((t) => t.setAttribute('aria-expanded', 'false'));
+    daftarFaq.querySelectorAll('.faq-jawaban').forEach((j) => { j.hidden = true; });
+    if (!sedangTerbuka) {
+      tombol.setAttribute('aria-expanded', 'true');
+      jawaban.hidden = false;
+    }
+  });
+
+  wrapper.append(tombol, jawaban);
+  daftarFaq.append(wrapper);
+});
